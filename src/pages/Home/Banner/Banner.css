@@ -1,0 +1,21 @@
+.banner-height {
+  height: 50vh;
+  width: 100%;
+}
+
+.banner-description::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.406) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
