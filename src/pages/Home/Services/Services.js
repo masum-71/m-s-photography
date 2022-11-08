@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ServiceItem from "./ServiceItem/ServiceItem";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -10,7 +11,11 @@ const Services = () => {
   }, []);
   return (
     <div>
-      <h1>here have {services.length} services</h1>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+        {services.map((service) => (
+          <ServiceItem key={service._id} service={service}></ServiceItem>
+        ))}
+      </div>
     </div>
   );
 };
