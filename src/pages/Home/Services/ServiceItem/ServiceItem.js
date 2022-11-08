@@ -9,7 +9,7 @@ const ServiceItem = ({ service }) => {
       <figure>
         <PhotoProvider>
           <PhotoView src={img}>
-            <img className="h-52 w-full" src={img} alt={name} />
+            <img className="h-52 w-full cursor-zoom-in" src={img} alt={name} />
           </PhotoView>
         </PhotoProvider>
       </figure>
