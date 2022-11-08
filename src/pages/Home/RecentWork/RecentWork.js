@@ -16,11 +16,10 @@ const RecentWork = () => {
       </div>
       <div className="grid mt-4 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {images.map((image, index) => (
-          <PhotoProvider>
+          <PhotoProvider key={index}>
             <PhotoView src={image}>
               <img
                 className="w-full h-60 border-8 shadow-sm cursor-zoom-in rounded-lg"
-                key={index}
                 src={image}
                 alt=""
               ></img>
