@@ -8,10 +8,14 @@ const Banner = () => {
     <div className="carousel w-full my-5 banner-height">
       <div id="slide1" className="carousel-item relative w-full ">
         <div className="banner-description banner-height">
-          <img src={image1} className="w-full banner-height" alt="" />
+          <img
+            src={image1}
+            className="w-full banner-height rounded-2xl"
+            alt=""
+          />
         </div>
         <div className="absolute flex justify-start transform -translate-y-1/2 left-20 top-1/3">
-          <h1 className="text-4xl font-bold text-white text-start">
+          <h1 className="text-4xl font-bold text-white text-center">
             A picture is worth <br />
             A thousand <br />
             Word
@@ -28,7 +32,11 @@ const Banner = () => {
       </div>
       <div id="slide2" className="carousel-item relative w-full ">
         <div className="banner-description banner-height">
-          <img src={image2} className="w-full banner-height" alt="" />
+          <img
+            src={image2}
+            className="w-full banner-height rounded-2xl"
+            alt=""
+          />
         </div>
         <div className="absolute flex justify-start transform -translate-y-1/2 left-20 top-1/3">
           <h1 className="text-4xl font-bold text-white text-start">

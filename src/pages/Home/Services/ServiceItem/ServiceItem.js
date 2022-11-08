@@ -1,12 +1,17 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ServiceItem = ({ service }) => {
   const { img, name, price, description, ratings } = service;
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img className="h-52 w-full" src={img} alt="Shoes" />
+        <PhotoProvider>
+          <PhotoView src={img}>
+            <img className="h-52 w-full" src={img} alt={name} />
+          </PhotoView>
+        </PhotoProvider>
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>card-actions
