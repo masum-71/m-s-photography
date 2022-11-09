@@ -14,7 +14,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="navbar h-20 bg-slate-100 mb-10">
+    <div className="navbar h-20 bg-slate-100 mb-10 px-10">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
@@ -47,8 +47,10 @@ const Header = () => {
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
       </div>
-      <div className="navbar-end">
-        <button className="btn btn-outline btn-warning">Appoinment</button>
+      <div className="navbar-end ">
+        <li className="list-none mr-2">
+          <Link to="/login">Login</Link>
+        </li>
       </div>
     </div>
   );

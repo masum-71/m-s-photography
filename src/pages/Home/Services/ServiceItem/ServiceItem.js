@@ -1,9 +1,11 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Link } from "react-router-dom";
 
 const ServiceItem = ({ service }) => {
-  const { img, name, price, description, ratings } = service;
+  const { img, name, price, description, ratings, _id } = service;
+
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
@@ -25,7 +27,9 @@ const ServiceItem = ({ service }) => {
             <AiFillStar className="text-yellow-500"></AiFillStar>{" "}
           </div>
           <div>
-            <button className="btn btn-primary">View Detail</button>
+            <Link to={`/services/${_id}`}>
+              <button className="btn btn-primary">View Detail</button>
+            </Link>
           </div>
         </div>
       </div>
