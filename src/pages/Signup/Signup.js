@@ -5,7 +5,7 @@ import useTitle from "../../Hooks/UseTitle";
 
 const Signup = () => {
   useTitle("signup");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -15,14 +15,21 @@ const Signup = () => {
     const password = form.password.value;
     const photoURL = form.photoURL.value;
 
-    console.log(name, email, password, photoURL);
-
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        form.reset();
+        handleUpdateProfile(name, photoURL);
+        console.log(result.user);
       })
       .catch((err) => console.error(err));
+
+    const handleUpdateProfile = (name, photoURL) => {
+      const profile = {
+        displayName: name,
+        photoURL: photoURL,
+      };
+      updateUserProfile(profile);
+    };
   };
   return (
     <div className="hero">
