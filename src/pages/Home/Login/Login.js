@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 import useTitle from "../../../Hooks/UseTitle";
 
 const Login = () => {
   useTitle("Login");
+  const { login, loginWithGoogle } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -11,6 +13,21 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
   };
   return (
     <div className="hero">
@@ -48,6 +65,11 @@ const Login = () => {
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
           </form>
+          <p className="text-center mb-4">
+            <Link className="btn">
+              <button onClick={handleGoogleLogin}>Login with Google</button>
+            </Link>
+          </p>
           <p className="text-center mb-4">
             New to M'sPhotography ?{" "}
             <Link to="/signup" className="text-blue-600 font-bold">

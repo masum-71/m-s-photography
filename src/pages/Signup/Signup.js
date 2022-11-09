@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import useTitle from "../../Hooks/UseTitle";
 
 const Signup = () => {
   useTitle("signup");
+  const { createUser } = useContext(AuthContext);
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoURL = form.photoURL.value;
+
+    console.log(name, email, password, photoURL);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse justify-between">
@@ -11,7 +31,7 @@ const Signup = () => {
           <div className="text-center">
             <h1 className="text-3xl text-center font-bold">Sign Up!</h1>
           </div>
-          <form className="card-body">
+          <form onSubmit={handleSignUp} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -42,7 +62,7 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder="photo url"
-                name="email"
+                name="photoURL"
                 required
                 className="input input-bordered"
               />
