@@ -5,8 +5,11 @@ import useTitle from "../../Hooks/UseTitle";
 
 const Signup = () => {
   useTitle("signup");
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, loading } = useContext(AuthContext);
 
+  if (loading) {
+    <h1 className="text-4xl">Loading...</h1>;
+  }
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;

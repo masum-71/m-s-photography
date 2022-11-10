@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
 const Myreview = ({ review, handleDelete }) => {
   const { serviceName, img, name, message, _id } = review;
-
   return (
     <div className=" text-center border-2 p-4">
       <h1 className="font-bold">{serviceName}</h1>

@@ -13,6 +13,9 @@ const Header = () => {
       <li className="font-semibold mr-2">
         <Link to="/services">Services</Link>
       </li>
+      <li className="font-semibold mr-2">
+        <Link to="/blog">Blog</Link>
+      </li>
     </>
   );
 

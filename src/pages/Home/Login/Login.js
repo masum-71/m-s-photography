@@ -5,8 +5,10 @@ import useTitle from "../../../Hooks/UseTitle";
 
 const Login = () => {
   useTitle("Login");
-  const { login, loginWithGoogle } = useContext(AuthContext);
-
+  const { login, loginWithGoogle, loading } = useContext(AuthContext);
+  if (loading) {
+    <h1 className="text-4xl">Loading...</h1>;
+  }
   const handleLogin = (event) => {
     event.preventDefault();
 
