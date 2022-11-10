@@ -61,7 +61,7 @@ const Header = () => {
           {user?.email ? (
             <div className="flex">
               <li className="list-none mr-2">
-                <Link to="/login">My reviews</Link>
+                <Link to="/myreviews">My reviews</Link>
               </li>
               <li className="list-none mr-2">
                 <Link to="/login">Add Services</Link>

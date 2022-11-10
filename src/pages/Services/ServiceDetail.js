@@ -4,6 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import Review from "../Reviews/Review";
+import swal from "sweetalert";
 
 const ServiceDetail = () => {
   useTitle("Details");
@@ -19,7 +20,7 @@ const ServiceDetail = () => {
       img: user?.photoURL,
       message: message,
       serviceName: name,
-      id: _id,
+      email: user?.email,
     };
 
     fetch("http://localhost:5000/reviews", {
@@ -33,7 +34,10 @@ const ServiceDetail = () => {
       .then((data) => {
         event.target.reset();
         if (data.acknowledged) {
-          alert("your review has been successfully added");
+          swal({
+            title: "your review has been successfully added!",
+            icon: "success",
+          });
           const totalReviews = [...reviews, review];
           setReviews(totalReviews);
         }
