@@ -21,13 +21,16 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () =>
+          fetch("https://photograpy-server-black.vercel.app/services"),
       },
       {
         path: "/services/:id",
         element: <ServiceDetail></ServiceDetail>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://photograpy-server-black.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/login",

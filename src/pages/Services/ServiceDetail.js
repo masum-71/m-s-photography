@@ -23,7 +23,7 @@ const ServiceDetail = () => {
       email: user?.email,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://photograpy-server-black.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -46,7 +46,9 @@ const ServiceDetail = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceName=${name}`)
+    fetch(
+      `https://photograpy-server-black.vercel.app/reviews?serviceName=${name}`
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.error(err));
