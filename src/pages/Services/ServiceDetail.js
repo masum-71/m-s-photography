@@ -3,12 +3,13 @@ import useTitle from "../../Hooks/UseTitle";
 import { AiFillStar } from "react-icons/ai";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import Review from "../Reviews/Review";
 
 const ServiceDetail = () => {
   useTitle("Details");
   const { name, img, description, ratings, _id, price } = useLoaderData();
   const { user } = useContext(AuthContext);
-  const [reviews, setReviews] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   const handleAddReview = (event) => {
     event.preventDefault();
@@ -18,6 +19,7 @@ const ServiceDetail = () => {
       img: user?.photoURL,
       message: message,
       serviceName: name,
+      id: _id,
     };
 
     fetch("http://localhost:5000/reviews", {
@@ -30,6 +32,11 @@ const ServiceDetail = () => {
       .then((res) => res.json())
       .then((data) => {
         event.target.reset();
+        if (data.acknowledged) {
+          alert("your review has been successfully added");
+          const totalReviews = [...reviews, review];
+          setReviews(totalReviews);
+        }
       })
       .catch((err) => console.error(err));
   };
@@ -63,7 +70,11 @@ const ServiceDetail = () => {
         <h1 className="text-4xl text-center font-bold mb-4">
           Reviews on this service
         </h1>
-        <p>you have {reviews.length}</p>
+        <div>
+          {reviews.map((review) => (
+            <Review key={review._id} review={review}></Review>
+          ))}
+        </div>
       </div>
       <div className="text-center border-2 bg-slate-200">
         <p className="font-bold text-2xl">Add Your Review</p>
